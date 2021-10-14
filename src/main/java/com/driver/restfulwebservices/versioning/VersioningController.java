@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VersioningController {
 
-    //option 1 of implementing version - two separate URIs
-    @GetMapping("v1/person")
+    //option 2 of implementing versioning - using request params
+    @GetMapping(value = "person/param",params="version=1")
     public PersonV1 personV1(){
         return new PersonV1("Charlie Chaplin");
     }
 
-    @GetMapping("v2/person")
+    @GetMapping(value = "person/param",params="version=2")
     public PersonV2 personV2(){
         return new PersonV2(new Name("Charlie","Chaplin"));
     }
